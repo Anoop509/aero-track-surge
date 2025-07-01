@@ -1,15 +1,16 @@
+
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useKeyboardControls } from '../hooks/useKeyboardControls';
-import { Mesh, Vector3 } from 'three';
+import { Group, Vector3 } from 'three';
 
 interface CarProps {
   gameState: any;
   onCollision: () => void;
 }
 
-const Car = forwardRef<Mesh, CarProps>(({ gameState, onCollision }, ref) => {
-  const meshRef = useRef<Mesh>(null);
+const Car = forwardRef<Group, CarProps>(({ gameState, onCollision }, ref) => {
+  const meshRef = useRef<Group>(null);
   const velocity = useRef(new Vector3(0, 0, 0));
   const keys = useKeyboardControls();
 
